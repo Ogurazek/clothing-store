@@ -3,7 +3,7 @@
 export default function OfertaHeader() {
 
     const megaOferta = "Mega Oferta"
-    const diezOff = "Take 10% Off"
+    const diezOff = "10% de Descuento"
     return (
         <>
             <header className="bg-[#826300] w-full h-[2.5rem] text-[#FFFFFF] flex
