@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import CardsHome from "@/components/CardsHome";
 import CardCollection from "@/components/CardCollection";
-import { getHomeInfo } from "@/lib/getHomeInfo";
+import { getHomeInfo, getColeccion } from "@/lib/getHomeInfo";
 
 
 export default async function Home() {
   const { title, secondTitle } = await getHomeInfo()
+  const colecciones = await getColeccion()
 
   return (
     <>
@@ -51,12 +52,11 @@ export default async function Home() {
       <article className="w-[70%] h-auto flex flex-col items-center mt-16 gap-10">
         <p className="text-[24px] font-semibold">COLECCIÓN DE LA TIENDA</p>
         <section className="w-full h-auto flex flex-wrap gap-6 justify-center items-center">
-          <CardCollection />
-          <CardCollection />
-          <CardCollection />
-          <CardCollection />
-          <CardCollection />
-          <CardCollection />
+          {
+            colecciones.map((coleccion: any) => {
+              return <CardCollection title={coleccion.tituloColeccion} image={coleccion.image} key={coleccion.IdentificadorUnico} />
+            })
+          }
         </section>
       </article>
     </>
