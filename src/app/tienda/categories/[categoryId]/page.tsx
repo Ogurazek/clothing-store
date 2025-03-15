@@ -1,20 +1,25 @@
-import { getProducts } from "@/lib/getProducts";
 import CardsHome from "@/components/CardsHome";
+import { getProducts } from "@/lib/getProducts";
 
-export default async function PageCategoryID({
-    params,
-}: { params: { categoryId?: string } }) {
+export default async function PageCategory({ params }: { params: { categoryId: string } }) {
 
-    const categoryId = params;
-    const { products } = await getProducts({ categoryId });
+    const { categoryId } = params;
+    const { products, pagination } = await getProducts({ categoryId });
+
+
 
     return (
         <>
-            {products.length > 0 ? (
-                <CardsHome name={products.name} />
-            ) : (
-                <div>No hay productos disponibles.</div>
-            )}
+            <div>
+                <div>hola</div>
+                {products.length === 0 ? (
+                    <p>Está vacío</p>
+                ) : (
+                    products.map((product: any) => (
+                        <CardsHome key={product.slug} name={product.name} image={product.image} price={product.price} />
+                    ))
+                )}
+            </div>
         </>
     );
-}
+}    

@@ -10,16 +10,11 @@ export default async function pageShop() {
 
     return (
         <>
-            <article className="w-full h-auto flex">
-                <section className="w-[14.563rem] min-h-[37.5rem] h-auto flex flex-col border-[1px] border-b-0 border-[#DFDFDF]">
-                    <header className="w-full h-[2.375rem] pr-3 pl-3 gap-2.5 flex items-center sticky">
-                        <p>FILTER</p>
-                        <Filter size={24} />
-                    </header>
-                    <TitleCategory />
-                    <CheckBox />
-                </section>
-                <main className='w-full h-auto p-12 flex flex-wrap gap-11'>
+            <article className="w-full h-auto flex flex-col">
+                <div className='w-full h-20 flex p-14 items-center'>
+                    <h1 className='text-3xl font-bold'>Nuestros Productos</h1>
+                </div>
+                <main className='w-full h-auto p-12 pt-0  flex flex-wrap gap-11'>
                     {
                         categories.map((category: any) => {
                             // tengo que solucionar el tema de los any
@@ -28,7 +23,6 @@ export default async function pageShop() {
                     }
                 </main>
             </article >
-            <div>paginación</div>
         </>
     )
 }

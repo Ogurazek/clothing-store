@@ -3,18 +3,19 @@ import query from "./strapi";
 const { STRAPI_HOST } = process.env;
 
 export function getProducts({ categoryId }: { categoryId: string }) {
+  console.log("Ejecutando getProducts con categoryId sdasdasdasd:", categoryId);
   return query(
     `products?filters[product_category][slug][$contains]=${categoryId}&populate=image`
   ).then((res) => {
+    console.log(res);
     const { data, meta } = res;
-    console.log("pure con queso", data);
-    const products = data.map((product) => {
-      const { name, price, slug, image } = product;
 
-      const productImage = image?.url ? `${STRAPI_HOST}${image.url}` : null;
-
-      return { name, price, slug, image: productImage };
+    const products = data.map((product: any) => {
+      const { name, price, image: rawImage, slug } = product;
+      const image = `${STRAPI_HOST}${rawImage.url}`;
+      return { name, price, image, slug };
     });
+
     return { products, pagination: meta.pagination };
   });
 }
