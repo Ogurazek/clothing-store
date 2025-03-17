@@ -30,11 +30,11 @@ export default async function Home() {
           <p className="text-[16px] m-0">Ver Todo</p>
         </Link>
         <section className="w-full h-auto flex gap-8 justify-center items-center">
+          {/* <CardsHome name="nada" image="/picture.svg" price={300} />
           <CardsHome name="nada" image="/picture.svg" price={300} />
           <CardsHome name="nada" image="/picture.svg" price={300} />
           <CardsHome name="nada" image="/picture.svg" price={300} />
-          <CardsHome name="nada" image="/picture.svg" price={300} />
-          <CardsHome name="nada" image="/picture.svg" price={300} />
+          <CardsHome name="nada" image="/picture.svg" price={300} /> */}
 
         </section>
         <section className="w-full h-[14.75rem] mt-10 relative rounded-[6px] overflow-hidden">

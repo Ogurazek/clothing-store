@@ -13,11 +13,10 @@ export default function Navbar() {
                 </div>
                 <nav className="w-auto h-full flex items-center justify-center">
                     <ul className="flex gap-[3.375rem] text-[14px] font-semibold">
-                        <Link className="hover:opacity-75" href="/"><li>PRODUCTOS</li></Link>
-                        <Link className="hover:opacity-75" href="/tienda"><li>TIENDA</li></Link>
+                        <Link className="hover:opacity-75" href="/"><li>INICIO</li></Link>
+                        <Link className="hover:opacity-75" href="/tienda"><li>PRODUCTOS</li></Link>
                         <Link className="hover:opacity-75" href=""><li>BODAS</li></Link>
-                        <Link className="hover:opacity-75" href=""><li>SERVICIOS</li></Link>
-                        <Link className="hover:opacity-75" href=""><li>CONTACTO</li></Link>
+                        <Link className="hover:opacity-75" href="/contacto"><li>CONTACTO</li></Link>
                     </ul>
                 </nav>
                 <div className="w-[6.438rem] h-full gap-[1rem] flex justify-center items-center">

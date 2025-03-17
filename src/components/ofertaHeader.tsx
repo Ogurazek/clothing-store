@@ -2,7 +2,7 @@
 
 export default function OfertaHeader() {
 
-    const megaOferta = "Mega Oferta"
+    const megaOferta = "En Compras Online"
     const diezOff = "10% de Descuento"
     return (
         <>
