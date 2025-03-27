@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import CardsHome from "@/components/CardsHome";
+import CardProductFeature from "@/components/CardProductFeatur";
 import CardCollection from "@/components/CardCollection";
+import CardCategory from "@/components/CardCategory";
 import { getHomeInfo, getColeccion } from "@/lib/getHomeInfo";
+import { getCategories } from '@/lib/getCategories';
 
 
 export default async function Home() {
   const { title, secondTitle } = await getHomeInfo()
   const colecciones = await getColeccion()
+  const categories = await getCategories();
 
   return (
     <>
@@ -26,16 +29,15 @@ export default async function Home() {
       {/* segunda sección del home */}
       <article className="w-[95%] h-auto flex justify-center items-center mt-16 flex-col gap-6">
         <p className="text-[24px] font-semibold">PRODUCTOS DESTACADOS</p>
-        <Link href="" className="w-[6.063rem] h-[1.875rem] rounded-[10px] flex justify-center items-center border-[#B1B1B1] border-[1px] transition-transform duration-200 hover:bg-[#B1B1B1]">
+        <Link href="/tienda" className="w-[6.063rem] h-[1.875rem] rounded-[10px] flex justify-center items-center border-[#B1B1B1] border-[1px] transition-transform duration-200 hover:bg-[#B1B1B1]">
           <p className="text-[16px] m-0">Ver Todo</p>
         </Link>
         <section className="w-full h-auto flex gap-8 justify-center items-center">
-          {/* <CardsHome name="nada" image="/picture.svg" price={300} />
-          <CardsHome name="nada" image="/picture.svg" price={300} />
-          <CardsHome name="nada" image="/picture.svg" price={300} />
-          <CardsHome name="nada" image="/picture.svg" price={300} />
-          <CardsHome name="nada" image="/picture.svg" price={300} /> */}
-
+          {
+            categories.slice(0, 5).map((category: any) => {
+              return <CardCategory key={category.slug} name={category.name} slug={category.slug} image={category.image} />
+            })
+          }
         </section>
         <section className="w-full h-[14.75rem] mt-10 relative rounded-[6px] overflow-hidden">
           <Image className="w-full h-full object-cover" src="/pictureOrder.svg" alt="" width={600} height={600} />

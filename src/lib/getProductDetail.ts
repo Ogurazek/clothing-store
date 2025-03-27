@@ -2,12 +2,17 @@ import query from "./strapi";
 
 const { STRAPI_HOST } = process.env;
 
-export function getProducts({ categoryId }: { categoryId: string }) {
-  console.log("Ejecutando getProducts con categoryId sdasdasdasd:", categoryId);
+export default function getProductDetail({
+  productoId,
+}: {
+  productoId: string;
+}) {
+  console.log("Ejecutando getProducts con categoryId sdasdasdasd:", productoId);
   return query(
-    `products?filters[product_category][slug][$contains]=${categoryId}&populate=image`
+    `products?filters[slug][$eq]=${productoId}&populate[image][fields][0]=url`
   ).then((res) => {
-    const { data, meta } = res;
+    console.log("res", res);
+    const { data } = res;
 
     const products = data.map((product: any) => {
       const { name, price, image: rawImage, slug } = product;
@@ -15,6 +20,6 @@ export function getProducts({ categoryId }: { categoryId: string }) {
       return { name, price, image, slug };
     });
 
-    return { products, pagination: meta.pagination };
+    return { products };
   });
 }

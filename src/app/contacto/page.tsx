@@ -15,10 +15,10 @@ export default function ContactPage() {
                 </section>
                 <section className="w-[34.375rem] h-auto gap-4 flex flex-col">
                     <p className="text-center">Send a Message</p>
-                    <input className="bg-[#FFFFFF]  h-[2rem] border-2 border-black" placeholder="Full name" type="text" />
-                    <input className="bg-[#FFFFFF] h-[2rem] border-2 border-black" placeholder="Enter email" type="text" />
-                    <input className="bg-[#FFFFFF] h-[2rem] border-2 border-black" placeholder="Mobile number" type="text" />
-                    <textarea className="bg-[#FFFFFF] h-[8.125rem] border-2 border-black" type="text" placeholder="Message" name="" id=""></textarea>
+                    <input className="bg-[#FFFFFF]  h-[2rem] border-[1px] border-black" placeholder="Full name" type="text" />
+                    <input className="bg-[#FFFFFF] h-[2rem] border-[1px] border-black" placeholder="Enter email" type="text" />
+                    <input className="bg-[#FFFFFF] h-[2rem] border-[1px] border-black" placeholder="Mobile number" type="text" />
+                    <textarea className="bg-[#FFFFFF] h-[8.125rem] border-[1px] border-black" placeholder="Message" name="" id=""></textarea>
                 </section>
             </article>
         </>
