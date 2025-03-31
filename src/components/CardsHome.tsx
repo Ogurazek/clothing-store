@@ -14,7 +14,7 @@ export default function CardsHome({ name, image, price, id }: { name: string, im
                             {name}
                         </p>
                         <span className="text-gray-500 text-[14px]">
-                            {price}
+                            ${price}
                         </span>
                     </div>
                 </article>

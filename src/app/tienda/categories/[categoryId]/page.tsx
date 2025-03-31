@@ -1,11 +1,11 @@
 import CardsHome from "@/components/CardsHome";
 import { getProducts } from "@/lib/getProducts";
 import Link from "next/link";
-import { Undo2 } from 'lucide-react';
+import { Undo2, ArrowLeftFromLine } from 'lucide-react';
 
 export default async function PageCategory({ params }: { params: { categoryId: string } }) {
 
-    const { categoryId } = params;
+    const { categoryId } = await params;
     const { products, pagination } = await getProducts({ categoryId });
 
     return (
@@ -22,7 +22,13 @@ export default async function PageCategory({ params }: { params: { categoryId: s
                     </div>
                 ) : (
                     <>
-                        <h1 className="w-full pl-4 text-[28px] capitalize font-bold">{categoryId}</h1>
+                        <div className="w-full flex  mb-4">
+                            <Link href="/tienda" className="h-auto flex items-center gap-4">
+                                <ArrowLeftFromLine size={28} />
+                                <p className="text-[28px] font-bold ">Regresar</p>
+                            </Link>
+                            <h1 className="pl-4 text-[28px] capitalize font-bold">| {categoryId}</h1>
+                        </div>
                         {products.map((product: any) => (
                             <CardsHome key={product.slug} name={product.name} image={product.image} price={product.price} id={product.slug} />
                         ))}

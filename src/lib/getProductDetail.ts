@@ -7,17 +7,19 @@ export default function getProductDetail({
 }: {
   productoId: string;
 }) {
-  console.log("Ejecutando getProducts con categoryId sdasdasdasd:", productoId);
   return query(
-    `products?filters[slug][$eq]=${productoId}&populate[image][fields][0]=url`
+    `products?filters[slug][$eq]=${productoId}&populate=images`
   ).then((res) => {
-    console.log("res", res);
     const { data } = res;
 
     const products = data.map((product: any) => {
-      const { name, price, image: rawImage, slug } = product;
-      const image = `${STRAPI_HOST}${rawImage.url}`;
-      return { name, price, image, slug };
+      const { name, price, images: rawImages, slug, description } = product;
+
+      const images = rawImages
+        ? rawImages.map((img: any) => `${STRAPI_HOST}${img.url}`)
+        : [];
+
+      return { name, price, images, slug, description };
     });
 
     return { products };
